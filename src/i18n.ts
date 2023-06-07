@@ -3,9 +3,7 @@ import { loadTranslations } from "@angular/localize";
 import { getLocale, withLocale, useOnDocument, $ } from "@builder.io/qwik";
 import type { RenderOptions } from "@builder.io/qwik/server";
 import EN from "./locale/message.en.json";
-import SK from "./locale/message.sk.json";
 import FR from "./locale/message.fr.json";
-import SP from "./locale/message.sp.json";
 
 /**
  * This file is left for the developer to customize to get the behavior they want for localization.
@@ -27,7 +25,7 @@ if (!$localizeFn.TRANSLATION_BY_LOCALE) {
   $localizeFn.TRANSLATION_BY_LOCALE = new Map([["", {}]]);
   Object.defineProperty($localize, "TRANSLATIONS", {
     get: function () {
-      const locale = getLocale();
+      const locale = getLocale("en");
       let translations = $localizeFn.TRANSLATION_BY_LOCALE.get(locale);
       if (!translations) {
         $localizeFn.TRANSLATION_BY_LOCALE.set(locale, (translations = {}));
@@ -42,7 +40,7 @@ if (!$localizeFn.TRANSLATION_BY_LOCALE) {
  */
 export function initTranslations() {
   console.log("Loading translations...");
-  [SK, EN, FR, SP].forEach(({ translations, locale }) => {
+  [EN, FR].forEach(({ translations, locale }) => {
     withLocale(locale, () => loadTranslations(translations));
   });
 }
@@ -83,11 +81,12 @@ export function extractLang(
  *
  * @returns The base URL to use for loading the chunks in the browser.
  */
-export function extractBase({ envData }: RenderOptions): string {
-  if (import.meta.env.DEV) {
+export function extractBase(args: RenderOptions): string {
+  const qwikcity = args.serverData?.qwikcity;
+  if (qwikcity.mode === "dev") {
     return "/build";
   } else {
-    return "/build/" + envData!.locale;
+    return "/build/" + (args.serverData?.locale || "en");
   }
 }
 

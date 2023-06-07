@@ -1,3 +1,17 @@
+# $localize issue with Qwik
+run
+```bash
+npm run build.client && npm run build.server && npm run i18n-translate && npm run serve
+```
+and open http://localhost:3000/counter/?locale=fr
+
+see [src/components/counter.tsx](src/components/counter.tsx) for code
+
+![](./problem.gif)
+
+
+
+
 # i18n demo for Qwik
 
 Qwik is unique in that it has fine-grained lazy loading of code. The classical way to do translation is at runtime by looking up the translation strings in the translation map. This is not conducive with lazy loading because it requires that the translations be eagerly loaded, defeating the fine-grained lazy loading of Qwik.

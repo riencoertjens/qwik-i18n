@@ -27,8 +27,8 @@
   "devDependencies": {
     "@angular/compiler": "^14.2.4",
     "@angular/compiler-cli": "^14.2.4",
-    "@builder.io/qwik": "^0.16.2",
-    "@builder.io/qwik-city": "^0.1.0-beta9",
+    "@builder.io/qwik": "1.1.5",
+    "@builder.io/qwik-city": "1.1.5",
     "@types/eslint": "8.4.6",
     "@types/express": "4.17.13",
     "@types/node": "latest",
