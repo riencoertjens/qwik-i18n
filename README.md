@@ -1,4 +1,7 @@
 # $localize issue with Qwik
+
+$localize is not translating properly when used in a ternary that depends on a value from a store or when using a store value in it's template literal.
+
 run
 ```bash
 npm run build.client && npm run build.server && npm run i18n-translate && npm run serve
