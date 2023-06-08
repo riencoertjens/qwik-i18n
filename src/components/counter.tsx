@@ -4,9 +4,12 @@ export const Counter = component$(() => {
   const state = useStore({
     count: 0,
   });
+  const countVar = 11;
+
   return (
     <div key={state.count}>
       <h1>{$localize`Counter Example`} (with key attribute)</h1>
+      <div>{$localize`count: ${countVar}`} (without state)</div>
       <div>
         {$localize`count: ${state.count}`}: {state.count}
       </div>
@@ -24,9 +27,12 @@ export const CounterWithoutKey = component$(() => {
   const state = useStore({
     count: 0,
   });
+  const countVar = 11;
+
   return (
     <div>
       <h1>{$localize`Counter Example`} (without key attribute)</h1>
+      <div>{$localize`count: ${countVar}`} (without state)</div>
       <div>
         {$localize`count: ${state.count}`}: {state.count}
       </div>
