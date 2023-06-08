@@ -1,6 +1,7 @@
 # $localize issue with Qwik
 
-$localize is not translating properly when used in a ternary that depends on a value from a store or when using a store value in it's template literal.
+$localize string is not translated properly on first rerender when used in in conjuction with a value coming from a store
+to force the component to update on store change we've had to add a `key` attribute and this will also result in translated strings
 
 run
 ```bash
